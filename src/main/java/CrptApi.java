@@ -14,11 +14,11 @@ public class CrptApi {
     private final String URL = "http://<server-name>[:server-port]" +
             "/api/v3/{extension}/ rollout?omsId={omsId}";
 
-
     private int requestLimit;
     private final TimeUnit timeUnit;
     private static int counter;
 
+    // ********************************
     public CrptApi(TimeUnit timeUnit, int requestLimit) {
         this.timeUnit = timeUnit;
         if (requestLimit >= 0) {
@@ -34,8 +34,7 @@ public class CrptApi {
         httpRequest(docJson);
     }
 
-    //К сожалению, я не понял, как и где нужно использовать подпись
-    @SuppressWarnings("unchecked")
+    
     private JSONObject getDocJson(Document document, String signature) {
         JSONObject doc = new JSONObject();
         if (isNull(document.getDescription())) {
@@ -131,9 +130,7 @@ public class CrptApi {
     }
 
     /**
-     * Класс описывает объект документа,
-     * поле "Перечень продуктов" описано как отдельный класс.
-     * Необязательные поля задаются через сеттеры
+     * Class Document     
      */
     public static class Document {
         @Getter
